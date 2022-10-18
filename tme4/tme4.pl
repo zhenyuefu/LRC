@@ -6,8 +6,8 @@ inverse([],[]).
 inverse([X|L1],L2) :- inverse(L1,L3), concatene(L3,[X],L2).
 
 supprime([],_,[]).
-supprime([X|L1],Y,Z) :-  X = Y, supprime(L1,Y,Z2), concatene([],Z2,Z).
-supprime([X|L1],Y,Z) :-  X \= Y, supprime(L1,Y,Z2), concatene([X],Z2,Z).
+supprime([X|L1],X,Z) :- supprime(L1,Y,Z2), concatene([],Z2,Z).
+supprime([X|L1],Y,Z) :- X \= Y, supprime(L1,Y,Z2), concatene([X],Z2,Z).
 
 filtre(X,[],X).
 filtre(L,[X|Y],Z) :- supprime(L,X,Z2), filtre(Z2,Y,Z).
